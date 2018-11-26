@@ -254,13 +254,13 @@ function bntd_wgt1_control() {
   
 	if($_POST['widget_control_submit'])
 	{
-	  $bntd_wgt1['title'] = html_special_chars($_POST['title']);
-	  $bntd_wgt1['day'] = html_special_chars($_POST['day']);
-	  $bntd_wgt1['time'] = html_special_chars($_POST['time']);
-	  $bntd_wgt1['en_date'] = html_special_chars ($_POST ['en_date']);
-	  $bntd_wgt1['hijri_date'] = html_special_chars ($_POST ['hijri_date']);
-	  $bntd_wgt1['bn_date'] = html_special_chars ($_POST ['bn_date']);
-	  $bntd_wgt1['season'] = html_special_chars ($_POST ['season']);
+	  $bntd_wgt1['title'] = htmlspecialchars($_POST['title']);
+	  $bntd_wgt1['day'] = htmlspecialchars($_POST['day']);
+	  $bntd_wgt1['time'] = htmlspecialchars($_POST['time']);
+	  $bntd_wgt1['en_date'] = htmlspecialchars ($_POST ['en_date']);
+	  $bntd_wgt1['hijri_date'] = htmlspecialchars ($_POST ['hijri_date']);
+	  $bntd_wgt1['bn_date'] = htmlspecialchars ($_POST ['bn_date']);
+	  $bntd_wgt1['season'] = htmlspecialchars ($_POST ['season']);
 	  update_option ("bntd_wgt1", $bntd_wgt1);
 	}
 ?>
@@ -291,7 +291,6 @@ function bntd_wgt1_control() {
 
     <input type="hidden" id="widget_control_submit"  name="widget_control_submit" value="1" />
   </p>
-	<p><span style="color: gray;">Go to: Settings > <a href="<?php admin_url(); ?>options-general.php?page=bangla-time-date">Bangla Time & Date</a> to change settings.</span></p>
 <?php
 }
 
@@ -311,6 +310,7 @@ if ($bntd_options['cal_wgt'] == "1") { add_action('wp_head', 'bntd_header_conten
 
 wp_register_sidebar_widget('bangla_time_date', 'Bangla Time & Date', 'widget_bangla_time_date', array('description' => _('Display Bangla Time & Date, Gregorian, Hijri & Bangla season name.')));
 wp_register_widget_control('bangla_time_date', 'Bangla Time & Date', 'bntd_wgt1_control');
+
 
 	add_shortcode('bangla_time', 'bntd_bangla_time');
 	add_shortcode('bangla_day', 'bntd_bn_day');
