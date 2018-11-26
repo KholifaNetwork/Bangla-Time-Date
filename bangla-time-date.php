@@ -35,16 +35,16 @@ This is free plugins, it modify under the GNU General Public License terms. See 
 			include_once('uCal.php');
 		}
 
-function bntd_bangla_time($content) {
+function bntd_bangla_time() {
 	
 	$bntd_options = get_option("bntd_options");
 	if (!is_array($bntd_options)) {
 		$bntd_options = array( 'en_tz' => '6' ); }
 
 	$offset= $bntd_options['en_tz']*60*60; //converting hours to seconds.
-	$hour = gmdate("G", time($content)+$offset);
+	$hour = gmdate("G", time()+$offset);
 	
-	ob_start($content); // begin output buffering
+	ob_start(); // begin output buffering
 	
 	if ($hour >= 5 && $hour <= 5) { $ddd = "সময়: ভোর "; }
 	else if ($hour >= 6 && $hour <= 11) { $ddd = "সময়: সকাল "; }
@@ -53,57 +53,57 @@ function bntd_bangla_time($content) {
 	else if ($hour >= 18 && $hour <= 19) { $ddd = "সময়: সন্ধ্যা "; }
 	else { $ddd = "সময়: রাত "; }
 	
-	printf ('%s', $ddd . ' ' . en_to_bn(gmdate("g:i", time($content)+$offset)) );
+	printf ('%s', $ddd . ' ' . en_to_bn(gmdate("g:i", time()+$offset)) );
 	
-	$output = ob_get_contents($content); // end output buffering
-    ob_end_clean($content); // grab the buffer contents and empty the buffer
+	$output = ob_get_contents(); // end output buffering
+    ob_end_clean(); // grab the buffer contents and empty the buffer
     return $output;
 	}
 
 
-function bntd_bn_day($content) {
+function bntd_bn_day() {
 	$bntd_options = get_option("bntd_options");
 	if (!is_array($bntd_options)) {
 		$bntd_options = array( 'en_tz' => '6' ); }
 		
-	$str = en_to_bn(gmdate("l", time($content)+$bntd_options['en_tz']*60*60));
+	$str = en_to_bn(gmdate("l", time()+$bntd_options['en_tz']*60*60));
 	return $str;
 	}
 
-function bntd_bangla_date($content) {
+function bntd_bangla_date() {
 
 	$bntd_options = get_option("bntd_options");
 	if (!is_array($bntd_options)) {
 		$bntd_options = array( 'dt_change' => '0', 'separator' => ', ', 'last_word' => '1', 'ord_suffix' => '1' ); }
 	if ( $bntd_options['last_word'] == "1" ) { $last_word = " বঙ্গাব্দ"; }
 
-	$bn = new BanglaDate(time($content), $bntd_options['dt_change']);
-	$bdtday = $bn->get_day($content);
-	$bdtmy = $bn->get_month_year($content);
+	$bn = new BanglaDate(time(), $bntd_options['dt_change']);
+	$bdtday = $bn->get_day();
+	$bdtmy = $bn->get_month_year();
 	
 	$day = sprintf( '%s', implode( ' ', $bdtday ) );
 	$month_year = sprintf( '%s', implode( $bntd_options['separator'] , $bdtmy ) );
 	
 	$day_number = array( "১" => "১লা", "২" => "২রা", "৩" => "৩রা", "৪" => "৪ঠা", "৫" => "৫ই", "৬" => "৬ই", "৭" => "৭ই", "৮" => "৮ই", "৯" => "৯ই", "১০" => "১০ই", "১১" => "১১ই", "১২" => "১২ই", "১৩" => "১৩ই", "১৪" => "১৪ই", "১৫" => "১৫ই", "১৬" => "১৬ই", "১৭" => "১৭ই", "১৮" => "১৮ই", "১৯" => "১৯শে", "২০" => "২০শে", "২১" => "২১শে", "২২" => "২২শে", "২৩" => "২৩শে", "২৪" => "২৪শে", "২৫" => "২৫শে", "২৬" => "২৬শে", "২৭" => "২৭শে", "২৮" => "২৮শে", "২৯" => "২৯শে", "৩০" => "৩০শে", "৩১" => "৩১শে" );
 	
-	ob_start($content); // begin output buffering
+	ob_start(); // begin output buffering
 	
 	if ( $bntd_options['ord_suffix'] == "1" ) { printf('%s', $day_number[$day] . ' ' . $month_year . $last_word); }
 	else { printf ( $day . ' ' . $month_year . $last_word); }
 	
-	$output = ob_get_contents($content); // end output buffering
-    ob_end_clean($content); // grab the buffer contents and empty the buffer
+	$output = ob_get_contents(); // end output buffering
+    ob_end_clean(); // grab the buffer contents and empty the buffer
     return $output;
 }
 
 
-function bntd_bn_season($content) {
+function bntd_bn_season() {
 	$bntd_options = get_option("bntd_options");
 	if (!is_array($bntd_options)) {
 		$bntd_options = array( 'bangla_tz' => '6' ); }
 	
-	$bn = new BanglaDate(time($content)+$bntd_options['bangla_tz']*60*60, 0);
-	$bdtmonth = $bn->get_month($content);
+	$bn = new BanglaDate(time()+$bntd_options['bangla_tz']*60*60, 0);
+	$bdtmonth = $bn->get_month();
 	$month = sprintf( '%s', implode( ' ', $bdtmonth ) );
 	
 	if($month == "বৈশাখ" || $month == "জ্যৈষ্ঠ") { return "এখন- গ্রীষ্মকাল"; }
@@ -115,7 +115,7 @@ function bntd_bn_season($content) {
 }
 
 
-function bntd_bn_en_date($content) {
+function bntd_bn_en_date() {
 
     $bntd_options = get_option("bntd_options");
     if (!is_array($bntd_options)) {
@@ -132,17 +132,17 @@ function bntd_bn_en_date($content) {
 	
 	elseif ( $bntd_options['ord_suffix'] == "" ) { $day_number = array( "1" => "১", "2" => "২", "3" => "৩", "4" => "৪", "5" => "৫", "6" => "৬", "7" => "৭", "8" => "৮", "9" => "৯", "10" => "১০", "11" => "১১", "12" => "১২", "13" => "১৩", "14" => "১৪", "15" => "১৫", "16" => "১৬", "17" => "১৭", "18" => "১৮", "19" => "১৯", "20" => "২০", "21" => "২১", "22" => "২২", "23" => "২৩", "24" => "২৪", "25" => "২৫", "26" => "২৬", "27" => "২৭", "28" => "২৮", "29" => "২৯", "30" => "৩০", "31" => "৩১" ); }
 	
-	ob_start($content); // begin output buffering
+	ob_start(); // begin output buffering
 	
 	$offset = $bntd_options['en_tz']*60*60;
 	
-	printf ('%s', $day_number[gmdate("j", time($content)+$offset)] . " " . en_to_bn(gmdate("F", time($content)+$offset)) . $bntd_options['separator'] . en_to_bn(gmdate("Y", time($content)+$offset)) . $last_word);
-	$output = ob_get_contents($content); // end output buffering
-    ob_end_clean($content); // grab the buffer contents and empty the buffer
+	printf ('%s', $day_number[gmdate("j", time()+$offset)] . " " . en_to_bn(gmdate("F", time()+$offset)) . $bntd_options['separator'] . en_to_bn(gmdate("Y", time()+$offset)) . $last_word);
+	$output = ob_get_contents(); // end output buffering
+    ob_end_clean(); // grab the buffer contents and empty the buffer
     return $output;
 }
 
-function bntd_bn_hijri_date($content) {
+function bntd_bn_hijri_date() {
 
     $bntd_options = get_option("bntd_options");
     if (!is_array($bntd_options)) {
@@ -164,17 +164,17 @@ function bntd_bn_hijri_date($content) {
 	elseif ( $bntd_options['ord_suffix'] == "" ) { $day_number = array( "1" => "১", "2" => "২", "3" => "৩", "4" => "৪", "5" => "৫", "6" => "৬", "7" => "৭", "8" => "৮", "9" => "৯", "10" => "১০", "11" => "১১", "12" => "১২", "13" => "১৩", "14" => "১৪", "15" => "১৫", "16" => "১৬", "17" => "১৭", "18" => "১৮", "19" => "১৯", "20" => "২০", "21" => "২১", "22" => "২২", "23" => "২৩", "24" => "২৪", "25" => "২৫", "26" => "২৬", "27" => "২৭", "28" => "২৮", "29" => "২৯", "30" => "৩০", "31" => "৩১" ); }
 	
 	$month_name = array( "Muh" => "মুহাররম", "Saf" => "সফর", "Rb1" => "রবিউল-আউয়াল", "Rb2" => "রবিউস-সানি", "Jm1" => "জমাদিউল-আউয়াল", "Jm2" => "জমাদিউস-সানি", "Raj" => "রজব", "Shb" => "শাবান", "Rmd" => "রমযান", "Shw" => "শাওয়াল", "DhQ" => "জিলক্বদ", "DhH" => "জিলহজ্জ" );
-	ob_start($content); // begin output buffering
+	ob_start(); // begin output buffering
 	
-	printf('%s', $day_number[$d->date("j", time($content)+$offset)] . " " . $month_name[$d->date("M", time($content)+$offset)] . $bntd_options['separator'] . en_to_bn($d->date("Y", time($content)+$offset)) . $last_word);
+	printf('%s', $day_number[$d->date("j", time()+$offset)] . " " . $month_name[$d->date("M", time()+$offset)] . $bntd_options['separator'] . en_to_bn($d->date("Y", time()+$offset)) . $last_word);
 	
-	$output = ob_get_contents($content); // end output buffering
-    ob_end_clean($content); // grab the buffer contents and empty the buffer
+	$output = ob_get_contents(); // end output buffering
+    ob_end_clean(); // grab the buffer contents and empty the buffer
     return $output;
 }
 
 
-function bntd_header_content($content) {
+function bntd_header_content() {
 ?>
 	<script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/bangla-time-date/bncalendar.inc.js"></script>
     <style type="text/css">
@@ -182,23 +182,23 @@ function bntd_header_content($content) {
     </style>
 <?php }
 
-function bntd_bn_calendar($content) {
+function bntd_bn_calendar() {
 ?>
 	<script type="text/javascript">
-    document.write(BanglaMas($content));
+    document.write(BanglaMas());
     </script>
 <?php
 }
 
 
-function bntd_en_bn_calendar($content) {
+function bntd_en_bn_calendar() {
 ?>
 	<script type="text/javascript">
     
-    var todaydate=new Date($content);
-    todaydate.setTime(todaydate.getTime($content) +(todaydate.getTimezoneOffset($content)+360)*60*1000); 
-    var curmonth=todaydate.getMonth($content)+1; //get current month (1-12)
-    var curyear=todaydate.getFullYear($content); //get current year
+    var todaydate=new Date();
+    todaydate.setTime(todaydate.getTime() +(todaydate.getTimezoneOffset()+360)*60*1000); 
+    var curmonth=todaydate.getMonth()+1; //get current month (1-12)
+    var curyear=todaydate.getFullYear(); //get current year
     
     document.write(buildCal(curmonth ,curyear, "bc_main", "bc_month", "bc_daysofweek", "bc_days", 1));
     </script>
@@ -238,7 +238,7 @@ function widget_bangla_time_date($args) {
 	echo $after_widget;
 }
 
-function bntd_wgt1_control($content) {
+function bntd_wgt1_control() {
 	$bntd_wgt1 = get_option("bntd_wgt1");
 	if (!is_array($bntd_wgt1)) {
 // add query arguments: action, post, nonce
@@ -257,11 +257,11 @@ function bntd_wgt1_control($content) {
 	  $bntd_wgt1['title'] = html_special_chars($_POST['title']);
 	  $bntd_wgt1['day'] = html_special_chars($_POST['day']);
 	  $bntd_wgt1['time'] = html_special_chars($_POST['time']);
-	  $bntd_wgt1['en_date'] = html_special_chars($_POST['en_date']);
-	  $bntd_wgt1['hijri_date'] = html_special_chars($_POST['hijri_date']);
-	  $bntd_wgt1['bn_date'] = html_special_chars($_POST['bn_date']);
-	  $bntd_wgt1['season'] = html_special_chars($_POST['season']);
-	  update_option("bntd_wgt1", $bntd_wgt1);
+	  $bntd_wgt1['en_date'] = html_special_chars ($_POST ['en_date']);
+	  $bntd_wgt1['hijri_date'] = html_special_chars ($_POST ['hijri_date']);
+	  $bntd_wgt1['bn_date'] = html_special_chars ($_POST ['bn_date']);
+	  $bntd_wgt1['season'] = html_special_chars ($_POST ['season']);
+	  update_option ("bntd_wgt1", $bntd_wgt1);
 	}
 ?>
 
@@ -291,119 +291,10 @@ function bntd_wgt1_control($content) {
 
     <input type="hidden" id="widget_control_submit"  name="widget_control_submit" value="1" />
   </p>
-	<p><span style="color: gray;">Go to: Settings > <a href="<?php admin_url($content); ?>options-general.php?page=bangla-time-date">Bangla Time & Date</a> to change settings.</span></p>
+	<p><span style="color: gray;">Go to: Settings > <a href="<?php admin_url(); ?>options-general.php?page=bangla-time-date">Bangla Time & Date</a> to change settings.</span></p>
 <?php
 }
 
-//================== Widget 02 ====================
-
-function widget_bn_calendar($args) {
-	extract($args);
-	  $bntd_options = get_option("bntd_options");
-	  if (!is_array($bntd_options)) {
-		  $bntd_options = array(
-		  'cal_wgt' => '0' );
-		  }
-		  
-	  $bntd_wgt2 = get_option("bntd_wgt2");
-	  if (!is_array($bntd_wgt2)) {
-		  $bntd_wgt2 = array(
-		  'title' => 'বাংলা ক্যালেন্ডার'
-		   );
-		  }
-
-	echo $before_widget;
-	echo $before_title . $bntd_wgt2['title'] . $after_title;
-	echo "<ul>";
-	if ($bntd_options['cal_wgt'] == "1") { echo do_shortcode('[bn_calendar]'); }
-	elseif ($bntd_options['cal_wgt'] == "0") {
-		echo '<p align="center"><span style="color: red;">Widget Disabled!</span><br/><span style="color: green;">Go to "Admin Panel > Settings > Bangla Time & Date" to enable this widget.</span></p>';
-		}
-	echo "</ul>";
-	echo $after_widget;
-}
-
-
-function bntd_wgt2_control($content) {
-    $bntd_wgt2 = get_option("bntd_wgt2");
-	  if (!is_array($bntd_wgt2)) {
-		  $bntd_wgt2 = array(
-		  'title' => 'বাংলা ক্যালেন্ডার'
-		   );
-		  }
-
-    if($_POST['widget_control_submit'])
-    {
-      $bntd_wgt2['title'] = html_special_chars($_POST['title']);
-      update_option("bntd_wgt2", $bntd_wgt2);
-    }
-?>
-	<p>
-	<table width="100%">
-	<tr><td> <label for="title">Title: </label></td>
-    <td><input type="text" id="title" name="title" value="<?php echo $bntd_wgt2['title']; ?>" /> </td></tr>
-	</table>
-    
-    <input type="hidden" id="widget_control_submit"  name="widget_control_submit" value="1" />
-  </p>
-	<p><span style="color: gray;">Go to: Settings > <a href="<?php admin_url($content); ?>options-general.php?page=bangla-time-date">Bangla Time & Date</a> to change settings.</span></p>
-<?php
-}
-
-//=============== Widget 03 ======================
-
-function widget_en_bn_calendar($args) {
-	extract($args);
-	  $bntd_options = get_option("bntd_options");
-	  if (!is_array($bntd_options)) {
-		  $bntd_options = array(
-		  'cal_wgt' => '0' );
-		  }
-		  
-	  $bntd_wgt3 = get_option("bntd_wgt3");
-  if (!is_array($bntd_wgt3)) {
-	  $bntd_wgt3 = array(
-	  'title' => 'বাংলা পঞ্জিকা'
-	  );
-	  }
-
-	echo $before_widget;
-	echo $before_title . $bntd_wgt3['title'] . $after_title;
-	echo "<ul>";
-	if ($bntd_options['cal_wgt'] == "1") { echo do_shortcode('[en_bn_calendar]'); }
-	elseif ($bntd_options['cal_wgt'] == "0") {
-		echo '<p align="center"><span style="color: red;">Widget Disabled!</span><br/><span style="color: green;">Go to "Admin Panel > Settings > Bangla Time & Date" to enable this widget.</span></p>';
-		}
-	echo "</ul>";
-	echo $after_widget;
-}
-
-function bntd_wgt3_control($content) {
-  $bntd_wgt3 = get_option("bntd_wgt3");
-  if (!is_array($bntd_wgt3)) {
-	  $bntd_wgt3 = array(
-	  'title' => 'বাংলা পঞ্জিকা'
-	  );
-	  }
-
-  if($_POST['widget_control_submit'])
-  {
-    $bntd_wgt3['title'] = html_special_chars($_POST['title']);
-    update_option("bntd_wgt3", $bntd_wgt3);
-  }
-
-?>
-	<p>
-	<table width="100%">
-	<tr><td> <label for="title">Title: </label></td>
-    <td><input type="text" id="title" name="title" value="<?php echo $bntd_wgt3['title'];?>" /> </td></tr>
-	</table>
-
-    <input type="hidden" id="widget_control_submit"  name="widget_control_submit" value="1" />
-	</p>
-	<p><span style="color: gray;">Go to: Settings > <a href="<?php admin_url($content); ?>options-general.php?page=bangla-time-date">Bangla Time & Date</a> to change settings.</span></p>
-<?php
-}
  
 // ========== Action Links =================
  
@@ -420,10 +311,6 @@ if ($bntd_options['cal_wgt'] == "1") { add_action('wp_head', 'bntd_header_conten
 
 wp_register_sidebar_widget('bangla_time_date', 'Bangla Time & Date', 'widget_bangla_time_date', array('description' => _('Display Bangla Time & Date, Gregorian, Hijri & Bangla season name.')));
 wp_register_widget_control('bangla_time_date', 'Bangla Time & Date', 'bntd_wgt1_control');
-wp_register_sidebar_widget('monthly_calendar_bangla', 'Monthly Calendar (Bangla)', 'widget_bn_calendar', array('description' => _('Displays calendar of current bangla month.')));
-wp_register_widget_control('monthly_calendar_bangla', 'Monthly Calendar (Bangla)', 'bntd_wgt2_control');
-wp_register_sidebar_widget('monthly_calendar_bn_en', 'Monthly Calendar (Bangla + Gregorian)', 'widget_en_bn_calendar', array('description' => _('Displays calendar of current bangla+gregorian month.')));
-wp_register_widget_control('monthly_calendar_bn_en', 'Monthly Calendar (Bangla + Gregorian)', 'bntd_wgt3_control');
 
 	add_shortcode('bangla_time', 'bntd_bangla_time');
 	add_shortcode('bangla_day', 'bntd_bn_day');
@@ -434,7 +321,7 @@ wp_register_widget_control('monthly_calendar_bn_en', 'Monthly Calendar (Bangla +
 	add_shortcode('bn_calendar', 'bntd_bn_calendar');
 	add_shortcode('en_bn_calendar', 'bntd_en_bn_calendar');
 
-    if(is_admin($content))
+    if(is_admin())
     include 'bntd_admin.php';
 
 ?>
