@@ -39,20 +39,6 @@ settings_fields( 'bntd-settings-group' );
 
 ?>
 
-
-<div class="postbox">
-	<h3 class="hndle" style="padding: 10px; margin: 0;"><span>Time & Date Translation</span></h3>
-<div class="inside"><p align="justify">Display Time, Date and Numbers in Bangla language.
-    <table class="form-table">
-        <tr valign="top">
-        <th scope="row">Translate:</th>
-        <td colspan="3">
-        <input id="bntd_options[trans_dt]" type="checkbox" name="bntd_options[trans_dt]" value="1" <?php if(isset($bntd_options['trans_dt'])==1) echo('checked="checked"'); ?>/><label for="bntd_options[trans_dt]">All Time & Date</label>
-		</td>
-        </tr>
-    </table>
-</div></div>
-
 <div class="postbox">
 	<h3 class="hndle" style="padding: 10px; margin: 0;"><span>Time Zone Settings</span></h3>
 <div class="inside"><p align="justify">Choose your Country time zone.</p>
@@ -103,23 +89,6 @@ settings_fields( 'bntd-settings-group' );
 </div></div>
 
 <div class="postbox">
-	<h3 class="hndle" style="padding: 10px; margin: 0;"><span>Bangla Time Zone Settings</span></h3>
-<div class="inside"><p align="justify">Select Bangladesh / India Time Zone</p>
-
-    <table class="form-table">
-        <tr valign="top">
-        <th scope="row"><label for="bn_tz">Time Zone:</label></th>
-        <td>
-        <select id="bn_tz" name="bntd_options[bangla_tz]">
-        <option value="5.5"<?php if($bntd_options['bangla_tz'] == "5.5") { echo " selected"; } ?>>GMT +5:30 (India)</option>
-        <option value="6"<?php if($bntd_options['bangla_tz'] == "6") { echo " selected"; } ?>>GMT +6 (Bangladesh)</option>
-        </select>
-        </td>
-        </tr>
-    </table>
-</div></div>
-
-<div class="postbox">
 	<h3 class="hndle" style="padding: 10px; margin: 0;"><span>Hijri Time Zone Settings</span></h3>
 <div class="inside"><p align="justify">Hijri month can have 29 or 30 days depending on the moon. Adjust it manually. For example, 01 days = 24 hours.</p>
 
@@ -139,18 +108,6 @@ settings_fields( 'bntd-settings-group' );
     </table>
 </div></div>
 
-<div class="postbox">
-        <h3 class="hndle" style="padding: 10px; margin: 0;"><span>Widget Settings</span></h3>
-    <div class="inside">
-    
-    <p>Here you can Enable or Disable Monthly Bangla Calendar widget. When enabled, additional scripts will be working Automatically.</p>
-    <table class="form-table">
-        <tr valign="top">
-        <th scope="row">Calendar widgets:</th>
-        <td><input type="checkbox" id="bntd_options[cal_wgt]" name="bntd_options[cal_wgt]" value="1" <?php if($bntd_options['cal_wgt']==1) echo('checked="checked"'); ?>/><label for="bntd_options[cal_wgt]">Enable</label></td>
-        </tr>
-	</table>
-</div></div>
 
     <?php submit_button(); ?>
 	</form>
