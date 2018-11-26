@@ -41,84 +41,20 @@ settings_fields( 'bntd-settings-group' );
 
 <div class="postbox">
 	<h3 class="hndle" style="padding: 10px; margin: 0;"><span>Time Zone Settings</span></h3>
-<div class="inside"><p align="justify">Choose your Country time zone.</p>
+<div class="inside"><p align="justify"><b>No needed extra settings cz this plugins only for bangladeshi peoples, all options including on widget area.</b>
 
-    <table class="form-table">
-        <tr valign="top">
-            <th scope="row"><label for="greg_tz">Time Zone:</label></th>
-            <td><select id="greg_tz" name="bntd_options[en_tz]">
-            <option value="-12"<?php if($bntd_options['en_tz'] == "-12") { echo " selected"; } ?>>GMT -12</option>
-            <option value="-11"<?php if($bntd_options['en_tz'] == "-11") { echo " selected"; } ?>>GMT -11</option>
-            <option value="-10"<?php if($bntd_options['en_tz'] == "-10") { echo " selected"; } ?>>GMT -10</option>
-            <option value="-9"<?php if($bntd_options['en_tz'] == "-9") { echo " selected"; } ?>>GMT -9</option>
-            <option value="-8"<?php if($bntd_options['en_tz'] == "-8") { echo " selected"; } ?>>GMT -8</option>
-            <option value="-7"<?php if($bntd_options['en_tz'] == "-7") { echo " selected"; } ?>>GMT -7</option>
-            <option value="-6"<?php if($bntd_options['en_tz'] == "-6") { echo " selected"; } ?>>GMT -6</option>
-            <option value="-5"<?php if($bntd_options['en_tz'] == "-5") { echo " selected"; } ?>>GMT -5</option>
-            <option value="-4.5"<?php if($bntd_options['en_tz'] == "-4.5") { echo " selected"; } ?>>GMT -4:30</option>
-            <option value="-4"<?php if($bntd_options['en_tz'] == "-4") { echo " selected"; } ?>>GMT -4</option>
-            <option value="-3.5"<?php if($bntd_options['en_tz'] == "-3.5") { echo " selected"; } ?>>GMT -3:30</option>
-            <option value="-3"<?php if($bntd_options['en_tz'] == "-3") { echo " selected"; } ?>>GMT -3</option>
-            <option value="-2"<?php if($bntd_options['en_tz'] == "-2") { echo " selected"; } ?>>GMT -2</option>
-            <option value="-1"<?php if($bntd_options['en_tz'] == "-1") { echo " selected"; } ?>>GMT -1</option>
-            <option value="0"<?php if($bntd_options['en_tz'] == "0") { echo " selected"; } ?>>GMT 0</option>
-            <option value="1"<?php if($bntd_options['en_tz'] == "1") { echo " selected"; } ?>>GMT +1</option>
-            <option value="2"<?php if($bntd_options['en_tz'] == "2") { echo " selected"; } ?>>GMT +2</option>
-            <option value="3"<?php if($bntd_options['en_tz'] == "3") { echo " selected"; } ?>>GMT +3</option>
-            <option value="3.5"<?php if($bntd_options['en_tz'] == "3.5") { echo " selected"; } ?>>GMT +3:30</option>
-            <option value="4"<?php if($bntd_options['en_tz'] == "4") { echo " selected"; } ?>>GMT +4</option>
-            <option value="4.5"<?php if($bntd_options['en_tz'] == "4.5") { echo " selected"; } ?>>GMT +4:30</option>
-            <option value="5"<?php if($bntd_options['en_tz'] == "5") { echo " selected"; } ?>>GMT +5</option>
-            <option value="5.5"<?php if($bntd_options['en_tz'] == "5.5") { echo " selected"; } ?>>GMT +5:30</option>
-            <option value="5.75"<?php if($bntd_options['en_tz'] == "5.75") { echo " selected"; } ?>>GMT +5:45</option>
-            <option value="6"<?php if($bntd_options['en_tz'] == "6") { echo " selected"; } ?>>GMT +6</option>
-            <option value="6.5"<?php if($bntd_options['en_tz'] == "6.5") { echo " selected"; } ?>>GMT +6:30</option>
-            <option value="7"<?php if($bntd_options['en_tz'] == "7") { echo " selected"; } ?>>GMT +7</option>
-            <option value="8"<?php if($bntd_options['en_tz'] == "8") { echo " selected"; } ?>>GMT +8</option>
-            <option value="9"<?php if($bntd_options['en_tz'] == "9") { echo " selected"; } ?>>GMT +9</option>
-            <option value="9.5"<?php if($bntd_options['en_tz'] == "9.5") { echo " selected"; } ?>>GMT +9:30</option>
-            <option value="10"<?php if($bntd_options['en_tz'] == "10") { echo " selected"; } ?>>GMT +10</option>
-            <option value="10.5"<?php if($bntd_options['en_tz'] == "10.5") { echo " selected"; } ?>>GMT +10:30</option>
-            <option value="11"<?php if($bntd_options['en_tz'] == "11") { echo " selected"; } ?>>GMT +11</option>
-            <option value="12"<?php if($bntd_options['en_tz'] == "12") { echo " selected"; } ?>>GMT +12</option>
-            <option value="13"<?php if($bntd_options['en_tz'] == "13") { echo " selected"; } ?>>GMT +13</option>
-            </select>
-            </td>
-        </tr>
-    </table>
+<br><br><br>
+<b>Thanks for Using Bangla Time & Date Plugins, if you like this please support us via visiting our website and like our facebook page.</b>
+<br>
+<br>
+<br><br>
+Best Regards...<br>
+<b>Kholifa Network</b></p>
+
 </div></div>
 
-<div class="postbox">
-	<h3 class="hndle" style="padding: 10px; margin: 0;"><span>Hijri Time Zone Settings</span></h3>
-<div class="inside"><p align="justify">Hijri month can have 29 or 30 days depending on the moon. Adjust it manually. For example, 01 days = 24 hours.</p>
-
-    <table class="form-table">
-        <tr valign="top">
-        <th scope="row"><label for="bntd_options[hijri_tz]">Time Zone:</label></th>
-        <td>
-		<select id="" name="" disabled="disabled">
-		<option value="" selected="selected">Server Default</option>
-		</select>
-		</td>
-        </tr>
-        <tr valign="top">
-        <th scope="row"><label for="bntd_options[hijri_adjust]">Plus or Minus Time (Hours):</label></th>
-        <td><input maxlength="3" type="text" id="bntd_options[hijri_adjust]" name="bntd_options[hijri_adjust]" size="3" value="<?php echo $bntd_options['hijri_adjust']; ?>"> (Example: -12, +24 etc.)</td>
-        </tr>
-    </table>
-</div></div>
-
-
-    <?php submit_button(); ?>
-	</form>
-
-
-	<form method="post" action="options.php">
-	<?php settings_fields( 'bntd-settings-group' ); ?>
+<br><br>
     
-    <input type="hidden" name="restore_defaults" value="1">
-    <input type="submit" value="Restore Default Settings" class="button button-secondary">
-    </form>
     <br/>
     
 <a name="credits"></a>
