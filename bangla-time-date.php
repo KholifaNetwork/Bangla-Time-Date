@@ -254,13 +254,13 @@ function bntd_wgt1_control() {
   
 	if($_POST['widget_control_submit'])
 	{
-	  $bntd_wgt1['title'] = html_special_chars ($_POST['title']);
-	  $bntd_wgt1['day'] = html_special_chars ($_POST['day']);
-	  $bntd_wgt1['time'] = html_special_chars ($_POST['time']);
-	  $bntd_wgt1['en_date'] = html_special_chars ($_POST ['en_date']);
-	  $bntd_wgt1['hijri_date'] = html_special_chars ($_POST ['hijri_date']);
-	  $bntd_wgt1['bn_date'] = html_special_chars ($_POST ['bn_date']);
-	  $bntd_wgt1['season'] = html_special_chars ($_POST ['season']);
+	  $bntd_wgt1['title']=($_POST['title']);
+	  $bntd_wgt1['day']=($_POST['day']);
+	  $bntd_wgt1['time']=($_POST['time']);
+	  $bntd_wgt1['en_date']=($_POST ['en_date']);
+	  $bntd_wgt1['hijri_date']=($_POST ['hijri_date']);
+	  $bntd_wgt1['bn_date']=($_POST ['bn_date']);
+	  $bntd_wgt1['season']=($_POST ['season']);
 	  update_option ("bntd_wgt1", $bntd_wgt1);
 	}
 ?>
