@@ -64,6 +64,7 @@ Best Regards...<br>
     <table class="form-table">
         <tr valign="top">
         <td>
+<p><a href="http://facebook.com/SurjoFans" target="_blank"><img src="http://www.gravatar.com/avatar/<?php echo md5( "rj.surjo@gmail.com" ); ?>" /></a></p>
     <p>Developer: <a href="http://facebook.com/SurjoFans" target="_blank">Faruk Hossain Surjo</a><br />
     E-Mail: mail.surjo@gmail.com<br />
     Website: <a href="http://surjo.net" target="_blank">Surjo.Net</a><br/>
